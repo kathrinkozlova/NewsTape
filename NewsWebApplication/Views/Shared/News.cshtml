@@ -1,0 +1,16 @@
+﻿@model IEnumerable<NewsWebApplication.Models.News>
+
+<div id="newsDiv">
+    <table>
+        @foreach (var data in Model)
+            {
+            <tr> <div id="@data.IdNews"></div></tr>
+            <tr><div class="news-title">@data.Title</div></tr>
+            string str = "../Images/" + @data.Image;
+            <tr><div><img src=@str title=@str style="width : 650px; height : 370px;" /></div></tr>
+            <tr> <div class="news-text" style="white-space: pre-line; word-break:break-word">@data.Text</div> </tr>
+            <tr><div class="news-date">@data.Date</div></tr>
+        }
+    </table>
+</div>
+

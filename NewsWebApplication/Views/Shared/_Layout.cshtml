@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Tape</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="header-title">
+            @Html.ActionLink("News Tape", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+        </div>
+        <div class="enter">
+            <a href="/News/Index">
+                <img src="~/Content/lock.png" alt="admin" />
+            </a>
+        </div>
+    </div>
+
+    <div class="body-content">
+        <div class="newsDiv" id="newsDiv">
+            @RenderBody()
+        </div>
+        <div id="divLoader" style="width: 166px; height: 100px; margin-left: auto; margin-right: auto;">
+        </div>
+        
+    </div>
+    <hr />
+    <footer>
+        <p>Ekaterina Kozlova &copy; @DateTime.Now.Year</p>
+    </footer>
+</body>
+</html>

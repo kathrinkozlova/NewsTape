@@ -1,0 +1,16 @@
+﻿@model IEnumerable<NewsWebApplication.Models.News>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (Session["UserId"] != null)
+{
+    <h4>Здравствуйте, @Session["UserName"].ToString()</h4>
+}
+
+<script src="~/Scripts/scroll.js"></script>
+
+<div id="newsList">
+    @Html.Partial("News")
+</div>

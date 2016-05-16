@@ -1,0 +1,77 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+.body-content {
+    margin: 0 auto;
+    max-width: 650px;
+        padding-left: 15px;
+    padding-right: 15px;
+}
+
+
+/* Set width on the form input elements since they're 100% wide by default */
+
+footer {
+    margin: 0 auto;
+    padding-left: 50px;
+    width: 250px;
+    font-size: 14px;
+    font-style: italic;
+}
+
+hr {
+    width: 90%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 0;
+    border-top: 1px solid #9ea29e;
+    color: #222222;
+}
+
+.header-title {
+    float: left;
+    min-width: 100px;
+}
+
+.header-title a{
+    font-size: 20px;
+}
+
+.enter {
+    float: right;
+    width: 50px;
+    padding-top: 12px;
+    margin-right: 5px;
+}
+
+.news-title {
+    margin-top: 40px;
+    margin-bottom: 10px;
+    font-size: 36px;
+}
+
+.news-text {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 24px;
+    width: 650px;
+}
+
+img {
+    vertical-align: middle;
+}
+
+.news-date {
+    float: right;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+#upload{
+    padding-top: 5px;
+    padding-bottom:5px;
+}
+
