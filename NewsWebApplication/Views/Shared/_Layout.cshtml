@@ -16,13 +16,13 @@
             @Html.ActionLink("News Tape", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
         </div>
         <div class="enter">
-            <a href="/News/Index">
+            <a href="/Users/IsLoggedIn">
                 <img src="~/Content/lock.png" alt="admin" />
             </a>
         </div>
     </div>
 
-    <div class="body-content">
+    <div class="body-content" style="max-width: 700px">
         <div class="newsDiv" id="newsDiv">
             @RenderBody()
         </div>

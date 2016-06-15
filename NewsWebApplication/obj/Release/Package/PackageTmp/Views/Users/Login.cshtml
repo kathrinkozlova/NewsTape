@@ -1,0 +1,52 @@
+﻿@model NewsWebApplication.Models.Users
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+
+    <div style="margin: 0 auto; width: 40%; padding-left: 40px; margin-bottom: -15px;">
+        <h2>Войти в аккаунт</h2>
+    </div>
+    <hr style="float: right; width: 100%" />
+
+    <table style="width: 50%; margin: 0 auto;">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+        <tr>
+            <td style="padding-right: 20px;">
+                @Html.LabelFor(model => model.Email, htmlAttributes: new { })
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+            </td>
+        </tr>
+
+        <tr>
+            <td style="padding-right: 20px;">
+                @Html.LabelFor(model => model.Password, htmlAttributes: new { })
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+            </td>
+        </tr>
+    </table>
+            <div style="margin: 0 auto; margin-top: 20px; margin-left: 250px; width: 70%">
+                <input type="submit" value="Вход" class="btn btn-default" style="width: 40%"/>
+            </div>
+            <div>
+                @Html.ActionLink("Еще не зарегестрированы?", "Register")
+            </div>
+
+}
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

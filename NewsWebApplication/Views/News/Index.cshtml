@@ -1,14 +1,17 @@
 ﻿@model IEnumerable<NewsWebApplication.Models.News>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "List of news";
 }
 
-<h2>Index</h2>
+<h2>Список новостей</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+<div>
+    @Html.ActionLink("Добавить новость", "Create")
+    <div style="float: right">
+        @Html.ActionLink("Перейти к списку пользователей", "Index", "Users")
+    </div>
+</div>
 <table class="table">
     <tr>
         <th>
@@ -41,9 +44,8 @@
             @Html.DisplayFor(modelItem => item.Date)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.IdNews }) |
-            @Html.ActionLink("Details", "Details", new { id=item.IdNews }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.IdNews })
+            @Html.ActionLink("Редактировать", "Edit", new { id=item.IdNews }) <br/>
+            @Html.ActionLink("Удалить", "Delete", new { id=item.IdNews })
         </td>
     </tr>
 }

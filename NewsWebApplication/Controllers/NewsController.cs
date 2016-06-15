@@ -17,19 +17,43 @@ namespace NewsWebApplication.Controllers
         // GET: News
         public ActionResult Index()
         {
-            return View(db.News.ToList());
+            if (Session["UserName"] != null)
+            {
+                string userName = Session["UserName"].ToString();
+
+                if (userName != null)
+                {
+                    var user = db.Users.Where(x => x.Email.Equals(userName)).Select(x => x.IdRole).FirstOrDefault();
+                    if (user == 1)
+                    {
+                        return View(db.News.ToList());
+                    }
+                }
+            }
+            return RedirectToAction("Index", "Home");
         }
 
 
         // GET: News/Create
         public ActionResult Create()
         {
-            return View();
+            if (Session["UserName"] != null)
+            {
+                string userName = Session["UserName"].ToString();
+
+                if (userName != null)
+                {
+                    var user = db.Users.Where(x => x.Email.Equals(userName)).Select(x => x.IdRole).FirstOrDefault();
+                    if (user == 1)
+                    {
+                        return View();
+                    }
+                }
+            }
+            return RedirectToAction("Index", "Home");
         }
 
         // POST: News/Create
-        // Чтобы защититься от атак чрезмерной передачи данных, включите определенные свойства, для которых следует установить привязку. Дополнительные 
-        // сведения см. в статье http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "IdNews,Title,Image,Text,Date")] News news, HttpPostedFileBase upload)
@@ -57,21 +81,32 @@ namespace NewsWebApplication.Controllers
         // GET: News/Edit/5
         public ActionResult Edit(int? id)
         {
-            if (id == null)
+            if (Session["UserName"] != null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                string userName = Session["UserName"].ToString();
+
+                if (userName != null)
+                {
+                    var user = db.Users.Where(x => x.Email.Equals(userName)).Select(x => x.IdRole).FirstOrDefault();
+                    if (user == 1)
+                    {
+                        if (id == null)
+                        {
+                            return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                        }
+                        News news = db.News.Find(id);
+                        if (news == null)
+                        {
+                            return HttpNotFound();
+                        }
+                        return View(news);
+                    }
+                }
             }
-            News news = db.News.Find(id);
-            if (news == null)
-            {
-                return HttpNotFound();
-            }
-            return View(news);
+            return RedirectToAction("Index", "Home");
         }
 
         // POST: News/Edit/5
-        // Чтобы защититься от атак чрезмерной передачи данных, включите определенные свойства, для которых следует установить привязку. Дополнительные 
-        // сведения см. в статье http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "IdNews,Title,Image,Text,Date")] News news, HttpPostedFileBase upload)
@@ -84,6 +119,12 @@ namespace NewsWebApplication.Controllers
                 upload.SaveAs(Server.MapPath("~/Images/" + fileName));
                 news.Image = fileName;
             }
+            if (upload == null)
+            {
+                var image = db.News.Where(x => x.IdNews.Equals(news.IdNews)).Select(x => x.Image).FirstOrDefault();
+                if (image != null)
+                    news.Image = image;
+            }                
             if (news.Image != null && news.Text != null && news.Title != null)
             {
                 news.Date = DateTime.Now;
@@ -100,16 +141,29 @@ namespace NewsWebApplication.Controllers
         // GET: News/Delete/5
         public ActionResult Delete(int? id)
         {
-            if (id == null)
+            if (Session["UserName"] != null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                string userName = Session["UserName"].ToString();
+
+                if (userName != null)
+                {
+                    var user = db.Users.Where(x => x.Email.Equals(userName)).Select(x => x.IdRole).FirstOrDefault();
+                    if (user == 1)
+                    {
+                        if (id == null)
+                        {
+                            return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                        }
+                        News news = db.News.Find(id);
+                        if (news == null)
+                        {
+                            return HttpNotFound();
+                        }
+                        return View(news);
+                    }
+                }
             }
-            News news = db.News.Find(id);
-            if (news == null)
-            {
-                return HttpNotFound();
-            }
-            return View(news);
+            return RedirectToAction("Index", "Home");
         }
 
         // POST: News/Delete/5

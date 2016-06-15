@@ -1,0 +1,74 @@
+﻿@model NewsWebApplication.Models.Users
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<div style="margin: 0 auto; width: 70%; padding-left: 100px; margin-bottom: -15px;">
+    <h2>Удаление пользователя</h2>
+</div>
+<hr style="float: right;" />
+<div style="margin: 0 auto; width: 50%">
+
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SecondName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SecondName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Password)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ConfirmPassword)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ConfirmPassword)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Roles.Role)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Roles.Role)
+        </dd>
+
+    </dl>
+</div>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-actions no-color" style="margin-left: 70px;">
+        <input type="submit" value="Удалить пользователя" class="btn btn-default" style="margin-bottom: 10px;" /> <br />
+        @Html.ActionLink("Вернуться к списку", "Index")
+    </div>
+        
+}
